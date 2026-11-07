@@ -1,5 +1,19 @@
 # CBU-DSSAN | 五语言科研展示网站 / Multilingual research project page
 
+## 公开访问 / Public access
+
+- **科研主页 / Research website:** [https://liudan518.github.io/CBD-DSSAN/](https://liudan518.github.io/CBD-DSSAN/)
+- **论文 PDF 全文 / Full-text PDF（约 6.0 MB）:** [https://liudan518.github.io/CBD-DSSAN/CBU-DSSAN.pdf](https://liudan518.github.io/CBD-DSSAN/CBU-DSSAN.pdf)
+- **BibTeX 引文 / Citation download:** [https://liudan518.github.io/CBD-DSSAN/S1474034622001835.bib](https://liudan518.github.io/CBD-DSSAN/S1474034622001835.bib)
+- **DOI 原文 / Publisher DOI:** [https://doi.org/10.1016/j.aei.2022.101725](https://doi.org/10.1016/j.aei.2022.101725)
+- **部署记录 / Deployment history:** [GitHub Actions](https://github.com/liudan518/CBD-DSSAN/actions)
+
+网页、论文 PDF 与 BibTeX 均可公开访问，无需登录。
+The website, paper PDF and BibTeX are publicly accessible without signing in.
+
+本项目通过 GitHub Pages 发布；更新 `main` 分支后会自动构建并部署。
+The site is hosted on GitHub Pages and redeploys automatically when `main` is updated.
+
 ## 快速使用 / Quick start
 
 1. 解压网站 ZIP。Unzip the archive.
