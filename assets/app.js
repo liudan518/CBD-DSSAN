@@ -1,0 +1,19 @@
+(()=>{'use strict';
+const supported=['zh','en','ru','fr','ar'],locales=window.CBU_LOCALES||{};let current='zh',activeTab='5',lastFocus=null;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const select=$('#language'),menuBtn=$('#menuBtn'),mobileNav=$('#mobileNav');
+function preferred(){try{let v=localStorage.getItem('cbu-lang');if(supported.includes(v))return v;}catch(e){}let n=(navigator.language||'').slice(0,2).toLowerCase();return supported.includes(n)?n:'zh';}
+function translate(l){current=supported.includes(l)?l:'en';let dict=locales[current];document.documentElement.lang=current;document.documentElement.dir=current==='ar'?'rtl':'ltr';select.value=current;document.title='CBU-DSSAN | '+dict.hero_title;
+$$('[data-t]').forEach(el=>{const k=el.dataset.t;if(k in dict)el.textContent=dict[k];});$$('[data-alt]').forEach(el=>{const k=el.dataset.alt;if(k in dict)el.alt=dict[k];});$$('.figure-button[data-caption]').forEach(el=>{el.setAttribute('aria-label',dict[el.dataset.caption]||'View figure');});
+$('#tab-caption').textContent=dict['fig'+activeTab+'_caption'];try{localStorage.setItem('cbu-lang',current);}catch(e){}
+}
+select.addEventListener('change',e=>translate(e.target.value));translate(preferred());
+function setMenu(open){menuBtn.setAttribute('aria-expanded',String(open));mobileNav.hidden=!open;}menuBtn.addEventListener('click',()=>setMenu(mobileNav.hidden));$$('#mobileNav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));document.addEventListener('click',e=>{if(!mobileNav.hidden&&!e.target.closest('#mobileNav')&&!e.target.closest('#menuBtn'))setMenu(false);});
+const sources={'5':'fig5-tnr.jpg','6':'fig6-ter.jpg','7':'fig7-ttr.jpg'};
+$$('.tab[data-tab]').forEach(tab=>tab.addEventListener('click',()=>{activeTab=tab.dataset.tab;$$('.tab').forEach(b=>{const v=b===tab;b.classList.toggle('active',v);b.setAttribute('aria-selected',String(v));});const img=$('#tab-image'),btn=$('.tab-image .figure-button'),key='fig'+activeTab+'_caption';img.src='images/'+sources[activeTab];img.dataset.alt=key;img.alt=locales[current][key];btn.dataset.full=img.src;btn.dataset.caption=key;btn.setAttribute('aria-label',locales[current][key]);$('#tab-caption').textContent=locales[current][key];}));
+const box=$('#lightbox'),boxImg=$('#lightboxImage'),boxCaption=$('#lightboxCaption');
+function closeBox(){if(box.hidden)return;box.hidden=true;box.setAttribute('aria-hidden','true');document.body.classList.remove('no-scroll');boxImg.removeAttribute('src');lastFocus?.focus();}
+$$('.figure-button').forEach(b=>b.addEventListener('click',()=>{const src=b.dataset.full;if(!src)return;lastFocus=b;boxImg.src=src;boxImg.alt=locales[current][b.dataset.caption]||'';boxCaption.textContent=locales[current][b.dataset.caption]||'';box.hidden=false;box.setAttribute('aria-hidden','false');document.body.classList.add('no-scroll');$('#lightboxClose').focus();}));
+$('#lightboxClose').addEventListener('click',closeBox);box.addEventListener('click',e=>{if(e.target===box)closeBox();});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeBox();setMenu(false);}});
+const copyButton=$('#copyBib');let resetTimer;copyButton.addEventListener('click',async()=>{const text=$('#bibtex').textContent;let success=false;try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);success=true;}}catch(e){}if(!success){const area=document.createElement('textarea');area.value=text;area.style.cssText='position:fixed;left:-9999px;top:0';document.body.appendChild(area);area.select();try{success=document.execCommand('copy');}catch(e){}area.remove();}copyButton.textContent=locales[current][success?'cite_copied':'cite_failed'];clearTimeout(resetTimer);resetTimer=setTimeout(()=>copyButton.textContent=locales[current]['cite_copy'],1800);});
+})();

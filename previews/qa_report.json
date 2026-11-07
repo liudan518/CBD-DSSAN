@@ -1,0 +1,82 @@
+[
+  {
+    "lang": "zh",
+    "view": "desktop",
+    "overflow": 0,
+    "broken_loaded_images": 0,
+    "bib_exact": true,
+    "js_errors": []
+  },
+  {
+    "lang": "en",
+    "view": "desktop",
+    "overflow": 0,
+    "broken_loaded_images": 0,
+    "bib_exact": true,
+    "js_errors": []
+  },
+  {
+    "lang": "ru",
+    "view": "desktop",
+    "overflow": 0,
+    "broken_loaded_images": 0,
+    "bib_exact": true,
+    "js_errors": []
+  },
+  {
+    "lang": "fr",
+    "view": "desktop",
+    "overflow": 0,
+    "broken_loaded_images": 0,
+    "bib_exact": true,
+    "js_errors": []
+  },
+  {
+    "lang": "ar",
+    "view": "desktop",
+    "overflow": 0,
+    "broken_loaded_images": 0,
+    "bib_exact": true,
+    "js_errors": []
+  },
+  {
+    "lang": "zh",
+    "view": "mobile",
+    "overflow": 0,
+    "menu_open": true,
+    "menu_closed": true,
+    "js_errors": []
+  },
+  {
+    "lang": "en",
+    "view": "mobile",
+    "overflow": 0,
+    "menu_open": true,
+    "menu_closed": true,
+    "js_errors": []
+  },
+  {
+    "lang": "ru",
+    "view": "mobile",
+    "overflow": 0,
+    "menu_open": true,
+    "menu_closed": true,
+    "js_errors": []
+  },
+  {
+    "lang": "fr",
+    "view": "mobile",
+    "overflow": 0,
+    "menu_open": true,
+    "menu_closed": true,
+    "js_errors": []
+  },
+  {
+    "lang": "ar",
+    "view": "mobile",
+    "overflow": 0,
+    "menu_open": true,
+    "menu_closed": true,
+    "js_errors": []
+  }
+]
